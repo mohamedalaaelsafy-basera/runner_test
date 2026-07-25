@@ -1,0 +1,21 @@
+name: Test Custom EC2 Runner
+
+on:
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  test-ec2-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check System Diagnostics
+        run: |
+          echo "Hostname: $(hostname)"
+          echo "Instance Uptime: $(uptime)"
+          echo "Running on Repo: ${{ github.repository }}"
+          uname -a
+
+      - name: Test Docker
+        run: |
+          docker --version
+          docker run --rm hello-world
