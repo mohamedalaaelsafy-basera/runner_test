@@ -19,3 +19,9 @@ jobs:
         run: |
           docker --version
           docker run --rm hello-world
+
+      - name: Simulate Long Running Task
+        run: |
+          echo "Sleeping for 2 minutes to simulate a long build..."
+          sleep 120
+          echo "Awake!"
